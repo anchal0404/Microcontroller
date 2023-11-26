@@ -1,0 +1,1538 @@
+
+
+Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
+                                                                                               Sun Nov 26 12:42:26 2023
+
+Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataCOMMON,global,class=CODE,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     7                           	psect	dataCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    10                           	psect	maintext,global,class=CODE,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,merge=1,delta=2
+    15                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+    16                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    17                           	dabs	1,0x7E,2
+    18     0000                     
+    19                           ; Generated 18/08/2023 GMT
+    20                           ; 
+    21                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    22                           ; All rights reserved.
+    23                           ; 
+    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    25                           ; 
+    26                           ; Redistribution and use in source and binary forms, with or without modification, are
+    27                           ; permitted provided that the following conditions are met:
+    28                           ; 
+    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    30                           ;        conditions and the following disclaimer.
+    31                           ; 
+    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    33                           ;        of conditions and the following disclaimer in the documentation and/or other
+    34                           ;        materials provided with the distribution. Publication is not required when
+    35                           ;        this file is used in an embedded application.
+    36                           ; 
+    37                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    38                           ;        software without specific prior written permission.
+    39                           ; 
+    40                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    41                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    42                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    43                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    44                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    45                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    46                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    47                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    48                           ; 
+    49                           ; 
+    50                           ; Code-generator required, PIC16F877A Definitions
+    51                           ; 
+    52                           ; SFR Addresses
+    53     0000                     	;# 
+    54     0001                     	;# 
+    55     0002                     	;# 
+    56     0003                     	;# 
+    57     0004                     	;# 
+    58     0005                     	;# 
+    59     0006                     	;# 
+    60     0007                     	;# 
+    61     0008                     	;# 
+    62     0009                     	;# 
+    63     000A                     	;# 
+    64     000B                     	;# 
+    65     000C                     	;# 
+    66     000D                     	;# 
+    67     000E                     	;# 
+    68     000E                     	;# 
+    69     000F                     	;# 
+    70     0010                     	;# 
+    71     0011                     	;# 
+    72     0012                     	;# 
+    73     0013                     	;# 
+    74     0014                     	;# 
+    75     0015                     	;# 
+    76     0015                     	;# 
+    77     0016                     	;# 
+    78     0017                     	;# 
+    79     0018                     	;# 
+    80     0019                     	;# 
+    81     001A                     	;# 
+    82     001B                     	;# 
+    83     001B                     	;# 
+    84     001C                     	;# 
+    85     001D                     	;# 
+    86     001E                     	;# 
+    87     001F                     	;# 
+    88     0081                     	;# 
+    89     0085                     	;# 
+    90     0086                     	;# 
+    91     0087                     	;# 
+    92     0088                     	;# 
+    93     0089                     	;# 
+    94     008C                     	;# 
+    95     008D                     	;# 
+    96     008E                     	;# 
+    97     0091                     	;# 
+    98     0092                     	;# 
+    99     0093                     	;# 
+   100     0094                     	;# 
+   101     0098                     	;# 
+   102     0099                     	;# 
+   103     009C                     	;# 
+   104     009D                     	;# 
+   105     009E                     	;# 
+   106     009F                     	;# 
+   107     010C                     	;# 
+   108     010D                     	;# 
+   109     010E                     	;# 
+   110     010F                     	;# 
+   111     018C                     	;# 
+   112     018D                     	;# 
+   113     0000                     	;# 
+   114     0001                     	;# 
+   115     0002                     	;# 
+   116     0003                     	;# 
+   117     0004                     	;# 
+   118     0005                     	;# 
+   119     0006                     	;# 
+   120     0007                     	;# 
+   121     0008                     	;# 
+   122     0009                     	;# 
+   123     000A                     	;# 
+   124     000B                     	;# 
+   125     000C                     	;# 
+   126     000D                     	;# 
+   127     000E                     	;# 
+   128     000E                     	;# 
+   129     000F                     	;# 
+   130     0010                     	;# 
+   131     0011                     	;# 
+   132     0012                     	;# 
+   133     0013                     	;# 
+   134     0014                     	;# 
+   135     0015                     	;# 
+   136     0015                     	;# 
+   137     0016                     	;# 
+   138     0017                     	;# 
+   139     0018                     	;# 
+   140     0019                     	;# 
+   141     001A                     	;# 
+   142     001B                     	;# 
+   143     001B                     	;# 
+   144     001C                     	;# 
+   145     001D                     	;# 
+   146     001E                     	;# 
+   147     001F                     	;# 
+   148     0081                     	;# 
+   149     0085                     	;# 
+   150     0086                     	;# 
+   151     0087                     	;# 
+   152     0088                     	;# 
+   153     0089                     	;# 
+   154     008C                     	;# 
+   155     008D                     	;# 
+   156     008E                     	;# 
+   157     0091                     	;# 
+   158     0092                     	;# 
+   159     0093                     	;# 
+   160     0094                     	;# 
+   161     0098                     	;# 
+   162     0099                     	;# 
+   163     009C                     	;# 
+   164     009D                     	;# 
+   165     009E                     	;# 
+   166     009F                     	;# 
+   167     010C                     	;# 
+   168     010D                     	;# 
+   169     010E                     	;# 
+   170     010F                     	;# 
+   171     018C                     	;# 
+   172     018D                     	;# 
+   173     0000                     	;# 
+   174     0001                     	;# 
+   175     0002                     	;# 
+   176     0003                     	;# 
+   177     0004                     	;# 
+   178     0005                     	;# 
+   179     0006                     	;# 
+   180     0007                     	;# 
+   181     0008                     	;# 
+   182     0009                     	;# 
+   183     000A                     	;# 
+   184     000B                     	;# 
+   185     000C                     	;# 
+   186     000D                     	;# 
+   187     000E                     	;# 
+   188     000E                     	;# 
+   189     000F                     	;# 
+   190     0010                     	;# 
+   191     0011                     	;# 
+   192     0012                     	;# 
+   193     0013                     	;# 
+   194     0014                     	;# 
+   195     0015                     	;# 
+   196     0015                     	;# 
+   197     0016                     	;# 
+   198     0017                     	;# 
+   199     0018                     	;# 
+   200     0019                     	;# 
+   201     001A                     	;# 
+   202     001B                     	;# 
+   203     001B                     	;# 
+   204     001C                     	;# 
+   205     001D                     	;# 
+   206     001E                     	;# 
+   207     001F                     	;# 
+   208     0081                     	;# 
+   209     0085                     	;# 
+   210     0086                     	;# 
+   211     0087                     	;# 
+   212     0088                     	;# 
+   213     0089                     	;# 
+   214     008C                     	;# 
+   215     008D                     	;# 
+   216     008E                     	;# 
+   217     0091                     	;# 
+   218     0092                     	;# 
+   219     0093                     	;# 
+   220     0094                     	;# 
+   221     0098                     	;# 
+   222     0099                     	;# 
+   223     009C                     	;# 
+   224     009D                     	;# 
+   225     009E                     	;# 
+   226     009F                     	;# 
+   227     010C                     	;# 
+   228     010D                     	;# 
+   229     010E                     	;# 
+   230     010F                     	;# 
+   231     018C                     	;# 
+   232     018D                     	;# 
+   233                           
+   234                           	psect	idataCOMMON
+   235     05C0                     __pidataCOMMON:
+   236                           
+   237                           ;initializer for read_digital_keypad@once
+   238     05C0  3401               	retlw	1
+   239     0008                     _PORTD	set	8
+   240     0006                     _PORTB	set	6
+   241     0088                     _TRISD	set	136
+   242     0086                     _TRISB	set	134
+   243                           
+   244                           	psect	cinit
+   245     07E4                     start_initialization:	
+   246                           ; #config settings
+   247                           
+   248     07E4                     __initialization:
+   249                           
+   250                           ; Initialize objects allocated to COMMON
+   251     07E4  120A  118A  25C0  120A  118A  	fcall	__pidataCOMMON	;fetch initializer
+   252     07E9  00FD               	movwf	__pdataCOMMON& (0+127)
+   253                           
+   254                           ; Clear objects allocated to BANK0
+   255     07EA  01A0               	clrf	__pbssBANK0& (0+127)
+   256     07EB  01A1               	clrf	(__pbssBANK0+1)& (0+127)
+   257     07EC  01A2               	clrf	(__pbssBANK0+2)& (0+127)
+   258     07ED  01A3               	clrf	(__pbssBANK0+3)& (0+127)
+   259     07EE  01A4               	clrf	(__pbssBANK0+4)& (0+127)
+   260     07EF  01A5               	clrf	(__pbssBANK0+5)& (0+127)
+   261     07F0  01A6               	clrf	(__pbssBANK0+6)& (0+127)
+   262     07F1  01A7               	clrf	(__pbssBANK0+7)& (0+127)
+   263     07F2  01A8               	clrf	(__pbssBANK0+8)& (0+127)
+   264     07F3  01A9               	clrf	(__pbssBANK0+9)& (0+127)
+   265                           
+   266                           ; Clear objects allocated to COMMON
+   267     07F4  01F0               	clrf	__pbssCOMMON& (0+127)
+   268     07F5  01F1               	clrf	(__pbssCOMMON+1)& (0+127)
+   269     07F6  01F2               	clrf	(__pbssCOMMON+2)& (0+127)
+   270     07F7  01F3               	clrf	(__pbssCOMMON+3)& (0+127)
+   271     07F8  01F4               	clrf	(__pbssCOMMON+4)& (0+127)
+   272     07F9  01F5               	clrf	(__pbssCOMMON+5)& (0+127)
+   273     07FA  01F6               	clrf	(__pbssCOMMON+6)& (0+127)
+   274     07FB  01F7               	clrf	(__pbssCOMMON+7)& (0+127)
+   275     07FC                     end_of_initialization:	
+   276                           ;End of C runtime variable initialization code
+   277                           
+   278     07FC                     __end_of__initialization:
+   279     07FC  0183               	clrf	3
+   280     07FD  120A  118A  2DD3   	ljmp	_main	;jump to C main() function
+   281                           
+   282                           	psect	bssCOMMON
+   283     0070                     __pbssCOMMON:
+   284     0070                     glow_on_press@j:
+   285     0070                     	ds	4
+   286     0074                     glow_on_press@i:
+   287     0074                     	ds	4
+   288                           
+   289                           	psect	dataCOMMON
+   290     007D                     __pdataCOMMON:
+   291     007D                     read_digital_keypad@once:
+   292     007D                     	ds	1
+   293                           
+   294                           	psect	bssBANK0
+   295     0020                     __pbssBANK0:
+   296     0020                     glow_on_press@k:
+   297     0020                     	ds	4
+   298     0024                     glow_on_press@wait:
+   299     0024                     	ds	4
+   300     0028                     glow_on_press@flag:
+   301     0028                     	ds	2
+   302                           
+   303                           	psect	cstackCOMMON
+   304     0078                     __pcstackCOMMON:
+   305     0078                     ?_glow_on_press:
+   306     0078                     ??_glow_on_press:	
+   307                           ; 1 bytes @ 0x0
+   308                           
+   309     0078                     ?_init_digital_keypad:	
+   310                           ; 1 bytes @ 0x0
+   311                           
+   312     0078                     ??_init_digital_keypad:	
+   313                           ; 1 bytes @ 0x0
+   314                           
+   315     0078                     ?_read_digital_keypad:	
+   316                           ; 1 bytes @ 0x0
+   317                           
+   318     0078                     ??_read_digital_keypad:	
+   319                           ; 1 bytes @ 0x0
+   320                           
+   321     0078                     ?_init_config:	
+   322                           ; 1 bytes @ 0x0
+   323                           
+   324     0078                     ??_init_config:	
+   325                           ; 1 bytes @ 0x0
+   326                           
+   327     0078                     ?_main:	
+   328                           ; 1 bytes @ 0x0
+   329                           
+   330                           
+   331                           ; 1 bytes @ 0x0
+   332     0078                     	ds	1
+   333     0079                     read_digital_keypad@mode:
+   334                           
+   335                           ; 1 bytes @ 0x1
+   336     0079                     	ds	1
+   337     007A                     glow_on_press@key:
+   338                           
+   339                           ; 1 bytes @ 0x2
+   340     007A                     	ds	1
+   341     007B                     ??_main:
+   342     007B                     main@key_copy:	
+   343                           ; 1 bytes @ 0x3
+   344                           
+   345                           
+   346                           ; 1 bytes @ 0x3
+   347     007B                     	ds	1
+   348     007C                     main@key:
+   349                           
+   350                           ; 1 bytes @ 0x4
+   351     007C                     	ds	1
+   352                           
+   353                           	psect	maintext
+   354     05D3                     __pmaintext:	
+   355 ;;
+   356 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   357 ;;
+   358 ;; *************** function _main *****************
+   359 ;; Defined at:
+   360 ;;		line 28 in file "main.c"
+   361 ;; Parameters:    Size  Location     Type
+   362 ;;		None
+   363 ;; Auto vars:     Size  Location     Type
+   364 ;;  key             1    4[COMMON] unsigned char 
+   365 ;;  key_copy        1    3[COMMON] unsigned char 
+   366 ;; Return value:  Size  Location     Type
+   367 ;;                  1    wreg      void 
+   368 ;; Registers used:
+   369 ;;		wreg, status,2, status,0, pclath, cstack
+   370 ;; Tracked objects:
+   371 ;;		On entry : B00/0
+   372 ;;		On exit  : 0/0
+   373 ;;		Unchanged: 0/0
+   374 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   375 ;;      Params:         0       0       0       0       0
+   376 ;;      Locals:         2       0       0       0       0
+   377 ;;      Temps:          0       0       0       0       0
+   378 ;;      Totals:         2       0       0       0       0
+   379 ;;Total ram usage:        2 bytes
+   380 ;; Hardware stack levels required when called: 2
+   381 ;; This function calls:
+   382 ;;		_glow_on_press
+   383 ;;		_init_config
+   384 ;;		_read_digital_keypad
+   385 ;; This function is called by:
+   386 ;;		Startup code after reset
+   387 ;; This function uses a non-reentrant model
+   388 ;;
+   389                           
+   390     05D3                     _main:	
+   391                           ;psect for function _main
+   392                           
+   393     05D3                     l815:	
+   394                           ;incstack = 0
+   395                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   396                           
+   397                           
+   398                           ;main.c: 30: ;main.c: 32: }
+   399     05D3  120A  118A  25C7  120A  118A  	fcall	_init_config
+   400     05D8                     l35:	
+   401                           ;main.c: 34: void glow_on_press(unsigned char key)
+   402                           
+   403                           
+   404                           ;main.c: 37:     unsigned int static flag = 0;
+   405     05D8  3000               	movlw	0
+   406     05D9  120A  118A  25F1  120A  118A  	fcall	_read_digital_keypad
+   407     05DE  00FC               	movwf	main@key
+   408     05DF                     l817:
+   409                           
+   410                           ;main.c: 40: 
+   411     05DF  303F               	movlw	63
+   412     05E0  067C               	xorwf	main@key,w
+   413     05E1  1903               	btfsc	3,2
+   414     05E2  2DE4               	goto	u601
+   415     05E3  2DE5               	goto	u600
+   416     05E4                     u601:
+   417     05E4  2DE7               	goto	l821
+   418     05E5                     u600:
+   419     05E5                     l819:
+   420                           
+   421                           ;main.c: 41:     if(wait++ == 20000);main.c: 42:     {
+   422     05E5  087C               	movf	main@key,w
+   423     05E6  00FB               	movwf	main@key_copy
+   424     05E7                     l821:
+   425                           
+   426                           ;main.c: 44:         flag = !flag;
+   427     05E7  087B               	movf	main@key_copy,w
+   428     05E8  120A  118A  261B  120A  118A  	fcall	_glow_on_press
+   429     05ED  2DD8               	goto	l35
+   430     05EE  120A  118A  2800   	ljmp	start
+   431     05F1                     __end_of_main:
+   432                           
+   433                           	psect	text1
+   434     05F1                     __ptext1:	
+   435 ;; *************** function _read_digital_keypad *****************
+   436 ;; Defined at:
+   437 ;;		line 10 in file "digital_keypad.c"
+   438 ;; Parameters:    Size  Location     Type
+   439 ;;  mode            1    wreg     unsigned char 
+   440 ;; Auto vars:     Size  Location     Type
+   441 ;;  mode            1    1[COMMON] unsigned char 
+   442 ;; Return value:  Size  Location     Type
+   443 ;;                  1    wreg      unsigned char 
+   444 ;; Registers used:
+   445 ;;		wreg, status,2, status,0
+   446 ;; Tracked objects:
+   447 ;;		On entry : 0/0
+   448 ;;		On exit  : 0/0
+   449 ;;		Unchanged: 0/0
+   450 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   451 ;;      Params:         0       0       0       0       0
+   452 ;;      Locals:         1       0       0       0       0
+   453 ;;      Temps:          1       0       0       0       0
+   454 ;;      Totals:         2       0       0       0       0
+   455 ;;Total ram usage:        2 bytes
+   456 ;; Hardware stack levels used: 1
+   457 ;; This function calls:
+   458 ;;		Nothing
+   459 ;; This function is called by:
+   460 ;;		_main
+   461 ;; This function uses a non-reentrant model
+   462 ;;
+   463                           
+   464     05F1                     _read_digital_keypad:	
+   465                           ;psect for function _read_digital_keypad
+   466                           
+   467                           
+   468                           ;incstack = 0
+   469                           ; Regs used in _read_digital_keypad: [wreg+status,2+status,0]
+   470                           ;read_digital_keypad@mode stored from wreg
+   471     05F1  00F9               	movwf	read_digital_keypad@mode
+   472     05F2                     l623:
+   473                           
+   474                           ;digital_keypad.c: 10: unsigned char read_digital_keypad(unsigned char mode);digital_key
+      +                          pad.c: 11: {;digital_keypad.c: 12:     static unsigned char once = 1;;digital_keypad.c: 
+      +                          14:     if (mode == 0)
+   475     05F2  0879               	movf	read_digital_keypad@mode,w
+   476     05F3  1D03               	btfss	3,2
+   477     05F4  2DF6               	goto	u11
+   478     05F5  2DF7               	goto	u10
+   479     05F6                     u11:
+   480     05F6  2DFC               	goto	l631
+   481     05F7                     u10:
+   482     05F7                     l625:
+   483                           
+   484                           ;digital_keypad.c: 15:     {;digital_keypad.c: 16:         return PORTB & 0x3F;
+   485     05F7  1283               	bcf	3,5	;RP0=0, select bank0
+   486     05F8  1303               	bcf	3,6	;RP1=0, select bank0
+   487     05F9  0806               	movf	6,w	;volatile
+   488     05FA  393F               	andlw	63
+   489     05FB  2E1A               	goto	l13
+   490     05FC                     l631:
+   491                           
+   492                           ;digital_keypad.c: 19:     {;digital_keypad.c: 20:         if (((PORTB & 0x3F) != 0x3F) 
+      +                          && once)
+   493     05FC  303F               	movlw	63
+   494     05FD  1283               	bcf	3,5	;RP0=0, select bank0
+   495     05FE  1303               	bcf	3,6	;RP1=0, select bank0
+   496     05FF  0506               	andwf	6,w	;volatile
+   497     0600  00F8               	movwf	??_read_digital_keypad
+   498     0601  303F               	movlw	63
+   499     0602  0678               	xorwf	??_read_digital_keypad,w
+   500     0603  1903               	btfsc	3,2
+   501     0604  2E06               	goto	u21
+   502     0605  2E07               	goto	u20
+   503     0606                     u21:
+   504     0606  2E0E               	goto	l643
+   505     0607                     u20:
+   506     0607                     l633:
+   507     0607  087D               	movf	read_digital_keypad@once,w
+   508     0608  1903               	btfsc	3,2
+   509     0609  2E0B               	goto	u31
+   510     060A  2E0C               	goto	u30
+   511     060B                     u31:
+   512     060B  2E0E               	goto	l643
+   513     060C                     u30:
+   514     060C                     l635:
+   515                           
+   516                           ;digital_keypad.c: 21:         {;digital_keypad.c: 22:             once = 0;
+   517     060C  01FD               	clrf	read_digital_keypad@once
+   518     060D  2DF7               	goto	l625
+   519     060E                     l643:
+   520     060E  303F               	movlw	63
+   521     060F  0506               	andwf	6,w	;volatile
+   522     0610  00F8               	movwf	??_read_digital_keypad
+   523     0611  303F               	movlw	63
+   524     0612  0678               	xorwf	??_read_digital_keypad,w
+   525     0613  1D03               	btfss	3,2
+   526     0614  2E16               	goto	u41
+   527     0615  2E17               	goto	u40
+   528     0616                     u41:
+   529     0616  2E19               	goto	l647
+   530     0617                     u40:
+   531     0617                     l645:
+   532                           
+   533                           ;digital_keypad.c: 27:         {;digital_keypad.c: 28:             once = 1;
+   534     0617  01FD               	clrf	read_digital_keypad@once
+   535     0618  0AFD               	incf	read_digital_keypad@once,f
+   536     0619                     l647:
+   537                           
+   538                           ;digital_keypad.c: 32:     return 0x3F;
+   539     0619  303F               	movlw	63
+   540     061A                     l13:
+   541     061A  0008               	return
+   542     061B                     __end_of_read_digital_keypad:
+   543                           
+   544                           	psect	text2
+   545     05C7                     __ptext2:	
+   546 ;; *************** function _init_config *****************
+   547 ;; Defined at:
+   548 ;;		line 16 in file "main.c"
+   549 ;; Parameters:    Size  Location     Type
+   550 ;;		None
+   551 ;; Auto vars:     Size  Location     Type
+   552 ;;		None
+   553 ;; Return value:  Size  Location     Type
+   554 ;;                  1    wreg      void 
+   555 ;; Registers used:
+   556 ;;		wreg, status,2, status,0, pclath, cstack
+   557 ;; Tracked objects:
+   558 ;;		On entry : 0/0
+   559 ;;		On exit  : 0/0
+   560 ;;		Unchanged: 0/0
+   561 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   562 ;;      Params:         0       0       0       0       0
+   563 ;;      Locals:         0       0       0       0       0
+   564 ;;      Temps:          0       0       0       0       0
+   565 ;;      Totals:         0       0       0       0       0
+   566 ;;Total ram usage:        0 bytes
+   567 ;; Hardware stack levels used: 1
+   568 ;; Hardware stack levels required when called: 1
+   569 ;; This function calls:
+   570 ;;		_init_digital_keypad
+   571 ;; This function is called by:
+   572 ;;		_main
+   573 ;; This function uses a non-reentrant model
+   574 ;;
+   575                           
+   576     05C7                     _init_config:	
+   577                           ;psect for function _init_config
+   578                           
+   579     05C7                     l651:	
+   580                           ;incstack = 0
+   581                           ; Regs used in _init_config: [wreg+status,2+status,0+pclath+cstack]
+   582                           
+   583                           
+   584                           ;main.c: 18:     while (1) {
+   585     05C7  1283               	bcf	3,5	;RP0=0, select bank0
+   586     05C8  1303               	bcf	3,6	;RP1=0, select bank0
+   587     05C9  0188               	clrf	8	;volatile
+   588                           
+   589                           ;main.c: 21:         key = read_digital_keypad(0);
+   590     05CA  1683               	bsf	3,5	;RP0=1, select bank1
+   591     05CB  1303               	bcf	3,6	;RP1=0, select bank1
+   592     05CC  0188               	clrf	8	;volatile
+   593     05CD                     l653:
+   594                           
+   595                           ;main.c: 24:         if (key != 0x3F)
+   596     05CD  120A  118A  25C1  120A  118A  	fcall	_init_digital_keypad
+   597     05D2                     l30:
+   598     05D2  0008               	return
+   599     05D3                     __end_of_init_config:
+   600                           
+   601                           	psect	text3
+   602     05C1                     __ptext3:	
+   603 ;; *************** function _init_digital_keypad *****************
+   604 ;; Defined at:
+   605 ;;		line 4 in file "digital_keypad.c"
+   606 ;; Parameters:    Size  Location     Type
+   607 ;;		None
+   608 ;; Auto vars:     Size  Location     Type
+   609 ;;		None
+   610 ;; Return value:  Size  Location     Type
+   611 ;;                  1    wreg      void 
+   612 ;; Registers used:
+   613 ;;		wreg, status,2
+   614 ;; Tracked objects:
+   615 ;;		On entry : 0/0
+   616 ;;		On exit  : 0/0
+   617 ;;		Unchanged: 0/0
+   618 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   619 ;;      Params:         0       0       0       0       0
+   620 ;;      Locals:         0       0       0       0       0
+   621 ;;      Temps:          0       0       0       0       0
+   622 ;;      Totals:         0       0       0       0       0
+   623 ;;Total ram usage:        0 bytes
+   624 ;; Hardware stack levels used: 1
+   625 ;; This function calls:
+   626 ;;		Nothing
+   627 ;; This function is called by:
+   628 ;;		_init_config
+   629 ;; This function uses a non-reentrant model
+   630 ;;
+   631                           
+   632     05C1                     _init_digital_keypad:	
+   633                           ;psect for function _init_digital_keypad
+   634                           
+   635     05C1                     l621:	
+   636                           ;incstack = 0
+   637                           ; Regs used in _init_digital_keypad: [wreg+status,2]
+   638                           
+   639                           
+   640                           ;digital_keypad.c: 7:     TRISB = TRISB | 0x3F;
+   641     05C1  1683               	bsf	3,5	;RP0=1, select bank1
+   642     05C2  1303               	bcf	3,6	;RP1=0, select bank1
+   643     05C3  0806               	movf	6,w	;volatile
+   644     05C4  383F               	iorlw	63
+   645     05C5  0086               	movwf	6	;volatile
+   646     05C6                     l7:
+   647     05C6  0008               	return
+   648     05C7                     __end_of_init_digital_keypad:
+   649                           
+   650                           	psect	text4
+   651     061B                     __ptext4:	
+   652 ;; *************** function _glow_on_press *****************
+   653 ;; Defined at:
+   654 ;;		line 50 in file "main.c"
+   655 ;; Parameters:    Size  Location     Type
+   656 ;;  key             1    wreg     unsigned char 
+   657 ;; Auto vars:     Size  Location     Type
+   658 ;;  key             1    2[COMMON] unsigned char 
+   659 ;; Return value:  Size  Location     Type
+   660 ;;                  1    wreg      void 
+   661 ;; Registers used:
+   662 ;;		wreg, status,2, status,0
+   663 ;; Tracked objects:
+   664 ;;		On entry : 0/0
+   665 ;;		On exit  : 0/0
+   666 ;;		Unchanged: 0/0
+   667 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   668 ;;      Params:         0       0       0       0       0
+   669 ;;      Locals:         1       0       0       0       0
+   670 ;;      Temps:          2       0       0       0       0
+   671 ;;      Totals:         3       0       0       0       0
+   672 ;;Total ram usage:        3 bytes
+   673 ;; Hardware stack levels used: 1
+   674 ;; This function calls:
+   675 ;;		Nothing
+   676 ;; This function is called by:
+   677 ;;		_main
+   678 ;; This function uses a non-reentrant model
+   679 ;;
+   680                           
+   681     061B                     _glow_on_press:	
+   682                           ;psect for function _glow_on_press
+   683                           
+   684                           
+   685                           ;incstack = 0
+   686                           ; Regs used in _glow_on_press: [wreg+status,2+status,0]
+   687                           ;glow_on_press@key stored from wreg
+   688     061B  00FA               	movwf	glow_on_press@key
+   689     061C                     l739:
+   690                           
+   691                           ;main.c: 50:    {;main.c: 51:        PORTD = (unsigned char)(PORTD | (1 << i));;main.c: 
+      +                          53:    };main.c: 54: ;main.c: 55:    else if(i>= 8 && i<16);main.c: 57:        PORTD = (
+      +                          unsigned char)(PORTD & ~(1<< (i - 8)));
+   692     061C  3001               	movlw	1
+   693     061D  1283               	bcf	3,5	;RP0=0, select bank0
+   694     061E  1303               	bcf	3,6	;RP1=0, select bank0
+   695     061F  07A4               	addwf	glow_on_press@wait,f
+   696     0620  3000               	movlw	0
+   697     0621  1803               	skipnc
+   698     0622  3001               	movlw	1
+   699     0623  07A5               	addwf	glow_on_press@wait+1,f
+   700     0624  3000               	movlw	0
+   701     0625  1803               	skipnc
+   702     0626  3001               	movlw	1
+   703     0627  07A6               	addwf	glow_on_press@wait+2,f
+   704     0628  3000               	movlw	0
+   705     0629  1803               	skipnc
+   706     062A  3001               	movlw	1
+   707     062B  07A7               	addwf	glow_on_press@wait+3,f
+   708     062C  3021               	movlw	33
+   709     062D  0624               	xorwf	glow_on_press@wait,w
+   710     062E  304E               	movlw	78
+   711     062F  1903               	skipnz
+   712     0630  0625               	xorwf	glow_on_press@wait+1,w
+   713     0631  0426               	iorwf	glow_on_press@wait+2,w
+   714     0632  0427               	iorwf	glow_on_press@wait+3,w
+   715     0633  1D03               	btfss	3,2
+   716     0634  2E36               	goto	u331
+   717     0635  2E37               	goto	u330
+   718     0636                     u331:
+   719     0636  2FE3               	goto	l77
+   720     0637                     u330:
+   721     0637                     l741:
+   722                           
+   723                           ;main.c: 58:                 i++;;main.c: 59:    }
+   724     0637  3000               	movlw	0
+   725     0638  1283               	bcf	3,5	;RP0=0, select bank0
+   726     0639  1303               	bcf	3,6	;RP1=0, select bank0
+   727     063A  00A7               	movwf	glow_on_press@wait+3
+   728     063B  3000               	movlw	0
+   729     063C  00A6               	movwf	glow_on_press@wait+2
+   730     063D  3000               	movlw	0
+   731     063E  00A5               	movwf	glow_on_press@wait+1
+   732     063F  3000               	movlw	0
+   733     0640  00A4               	movwf	glow_on_press@wait
+   734     0641                     l743:
+   735                           
+   736                           ;main.c: 60: 
+   737     0641  0828               	movf	glow_on_press@flag,w
+   738     0642  0429               	iorwf	glow_on_press@flag+1,w
+   739     0643  1903               	btfsc	3,2
+   740     0644  2E46               	goto	u341
+   741     0645  2E48               	goto	u340
+   742     0646                     u341:
+   743     0646  3001               	movlw	1
+   744     0647  2E49               	goto	u350
+   745     0648                     u340:
+   746     0648  3000               	movlw	0
+   747     0649                     u350:
+   748     0649  00F8               	movwf	??_glow_on_press
+   749     064A  01F9               	clrf	??_glow_on_press+1
+   750     064B  0878               	movf	??_glow_on_press,w
+   751     064C  00A8               	movwf	glow_on_press@flag
+   752     064D  0879               	movf	??_glow_on_press+1,w
+   753     064E  00A9               	movwf	glow_on_press@flag+1
+   754     064F                     l745:
+   755                           
+   756                           ;main.c: 61:    else if(j <= 8)
+   757     064F  303E               	movlw	62
+   758     0650  067A               	xorwf	glow_on_press@key,w
+   759     0651  1D03               	btfss	3,2
+   760     0652  2E54               	goto	u361
+   761     0653  2E55               	goto	u360
+   762     0654                     u361:
+   763     0654  2F3E               	goto	l781
+   764     0655                     u360:
+   765     0655                     l747:
+   766                           
+   767                           ;main.c: 62:    {;main.c: 65:    }
+   768     0655  0877               	movf	glow_on_press@i+3,w
+   769     0656  1D03               	btfss	3,2
+   770     0657  2E65               	goto	u371
+   771     0658  0876               	movf	glow_on_press@i+2,w
+   772     0659  1D03               	btfss	3,2
+   773     065A  2E65               	goto	u371
+   774     065B  0875               	movf	glow_on_press@i+1,w
+   775     065C  1D03               	btfss	3,2
+   776     065D  2E65               	goto	u371
+   777     065E  3008               	movlw	8
+   778     065F  0274               	subwf	glow_on_press@i,w
+   779     0660  1D03               	skipz
+   780     0661  2E62               	goto	u373
+   781     0662                     u373:
+   782     0662  1803               	btfsc	3,0
+   783     0663  2E65               	goto	u371
+   784     0664  2E66               	goto	u370
+   785     0665                     u371:
+   786     0665  2E83               	goto	l753
+   787     0666                     u370:
+   788     0666                     l749:
+   789                           
+   790                           ;main.c: 66: ;main.c: 67:    else if(j>8 && j<=16)
+   791     0666  3001               	movlw	1
+   792     0667  00F8               	movwf	??_glow_on_press
+   793     0668  0A74               	incf	glow_on_press@i,w
+   794     0669  2E6C               	goto	u384
+   795     066A                     u385:
+   796     066A  1003               	clrc
+   797     066B  0DF8               	rlf	??_glow_on_press,f
+   798     066C                     u384:
+   799     066C  3EFF               	addlw	-1
+   800     066D  1D03               	skipz
+   801     066E  2E6A               	goto	u385
+   802     066F  0878               	movf	??_glow_on_press,w
+   803     0670  1283               	bcf	3,5	;RP0=0, select bank0
+   804     0671  1303               	bcf	3,6	;RP1=0, select bank0
+   805     0672  0408               	iorwf	8,w	;volatile
+   806     0673  0088               	movwf	8	;volatile
+   807     0674                     l751:
+   808                           
+   809                           ;main.c: 68:    {
+   810     0674  3001               	movlw	1
+   811     0675  07F4               	addwf	glow_on_press@i,f
+   812     0676  3000               	movlw	0
+   813     0677  1803               	skipnc
+   814     0678  3001               	movlw	1
+   815     0679  07F5               	addwf	glow_on_press@i+1,f
+   816     067A  3000               	movlw	0
+   817     067B  1803               	skipnc
+   818     067C  3001               	movlw	1
+   819     067D  07F6               	addwf	glow_on_press@i+2,f
+   820     067E  3000               	movlw	0
+   821     067F  1803               	skipnc
+   822     0680  3001               	movlw	1
+   823     0681  07F7               	addwf	glow_on_press@i+3,f
+   824                           
+   825                           ;main.c: 69:        PORTD = (unsigned char)(PORTD & ~(1<<(16 - j)));
+   826     0682  2F1B               	goto	l775
+   827     0683                     l753:
+   828     0683  0877               	movf	glow_on_press@i+3,w
+   829     0684  1D03               	btfss	3,2
+   830     0685  2E94               	goto	u390
+   831     0686  0876               	movf	glow_on_press@i+2,w
+   832     0687  1D03               	btfss	3,2
+   833     0688  2E94               	goto	u390
+   834     0689  0875               	movf	glow_on_press@i+1,w
+   835     068A  1D03               	btfss	3,2
+   836     068B  2E94               	goto	u390
+   837     068C  3008               	movlw	8
+   838     068D  0274               	subwf	glow_on_press@i,w
+   839     068E  1D03               	skipz
+   840     068F  2E90               	goto	u393
+   841     0690                     u393:
+   842     0690  1C03               	btfss	3,0
+   843     0691  2E93               	goto	u391
+   844     0692  2E94               	goto	u390
+   845     0693                     u391:
+   846     0693  2EB7               	goto	l761
+   847     0694                     u390:
+   848     0694                     l755:
+   849     0694  0877               	movf	glow_on_press@i+3,w
+   850     0695  1D03               	btfss	3,2
+   851     0696  2EA4               	goto	u401
+   852     0697  0876               	movf	glow_on_press@i+2,w
+   853     0698  1D03               	btfss	3,2
+   854     0699  2EA4               	goto	u401
+   855     069A  0875               	movf	glow_on_press@i+1,w
+   856     069B  1D03               	btfss	3,2
+   857     069C  2EA4               	goto	u401
+   858     069D  3010               	movlw	16
+   859     069E  0274               	subwf	glow_on_press@i,w
+   860     069F  1D03               	skipz
+   861     06A0  2EA1               	goto	u403
+   862     06A1                     u403:
+   863     06A1  1803               	btfsc	3,0
+   864     06A2  2EA4               	goto	u401
+   865     06A3  2EA5               	goto	u400
+   866     06A4                     u401:
+   867     06A4  2EB7               	goto	l761
+   868     06A5                     u400:
+   869     06A5                     l757:
+   870                           
+   871                           ;main.c: 72: ;main.c: 73:             if(i == 16 && j == 17)
+   872     06A5  3001               	movlw	1
+   873     06A6  00F8               	movwf	??_glow_on_press
+   874     06A7  0874               	movf	glow_on_press@i,w
+   875     06A8  3EF8               	addlw	248
+   876     06A9  3E01               	addlw	1
+   877     06AA  2EAD               	goto	u414
+   878     06AB                     u415:
+   879     06AB  1003               	clrc
+   880     06AC  0DF8               	rlf	??_glow_on_press,f
+   881     06AD                     u414:
+   882     06AD  3EFF               	addlw	-1
+   883     06AE  1D03               	skipz
+   884     06AF  2EAB               	goto	u415
+   885     06B0  0878               	movf	??_glow_on_press,w
+   886     06B1  3AFF               	xorlw	255
+   887     06B2  1283               	bcf	3,5	;RP0=0, select bank0
+   888     06B3  1303               	bcf	3,6	;RP1=0, select bank0
+   889     06B4  0508               	andwf	8,w	;volatile
+   890     06B5  0088               	movwf	8	;volatile
+   891     06B6  2E74               	goto	l751
+   892     06B7                     l761:
+   893     06B7  0873               	movf	glow_on_press@j+3,w
+   894     06B8  1D03               	btfss	3,2
+   895     06B9  2EC7               	goto	u421
+   896     06BA  0872               	movf	glow_on_press@j+2,w
+   897     06BB  1D03               	btfss	3,2
+   898     06BC  2EC7               	goto	u421
+   899     06BD  0871               	movf	glow_on_press@j+1,w
+   900     06BE  1D03               	btfss	3,2
+   901     06BF  2EC7               	goto	u421
+   902     06C0  3009               	movlw	9
+   903     06C1  0270               	subwf	glow_on_press@j,w
+   904     06C2  1D03               	skipz
+   905     06C3  2EC4               	goto	u423
+   906     06C4                     u423:
+   907     06C4  1803               	btfsc	3,0
+   908     06C5  2EC7               	goto	u421
+   909     06C6  2EC8               	goto	u420
+   910     06C7                     u421:
+   911     06C7  2EE7               	goto	l767
+   912     06C8                     u420:
+   913     06C8                     l763:
+   914                           
+   915                           ;main.c: 78:         };main.c: 79: 
+   916     06C8  3001               	movlw	1
+   917     06C9  00F8               	movwf	??_glow_on_press
+   918     06CA  0870               	movf	glow_on_press@j,w
+   919     06CB  3C08               	sublw	8
+   920     06CC  3E01               	addlw	1
+   921     06CD  2ED0               	goto	u434
+   922     06CE                     u435:
+   923     06CE  1003               	clrc
+   924     06CF  0DF8               	rlf	??_glow_on_press,f
+   925     06D0                     u434:
+   926     06D0  3EFF               	addlw	-1
+   927     06D1  1D03               	skipz
+   928     06D2  2ECE               	goto	u435
+   929     06D3  0878               	movf	??_glow_on_press,w
+   930     06D4  1283               	bcf	3,5	;RP0=0, select bank0
+   931     06D5  1303               	bcf	3,6	;RP1=0, select bank0
+   932     06D6  0408               	iorwf	8,w	;volatile
+   933     06D7  0088               	movwf	8	;volatile
+   934     06D8                     l765:
+   935                           
+   936                           ;main.c: 80:         else if(key == 0x3D)
+   937     06D8  3001               	movlw	1
+   938     06D9  07F0               	addwf	glow_on_press@j,f
+   939     06DA  3000               	movlw	0
+   940     06DB  1803               	skipnc
+   941     06DC  3001               	movlw	1
+   942     06DD  07F1               	addwf	glow_on_press@j+1,f
+   943     06DE  3000               	movlw	0
+   944     06DF  1803               	skipnc
+   945     06E0  3001               	movlw	1
+   946     06E1  07F2               	addwf	glow_on_press@j+2,f
+   947     06E2  3000               	movlw	0
+   948     06E3  1803               	skipnc
+   949     06E4  3001               	movlw	1
+   950     06E5  07F3               	addwf	glow_on_press@j+3,f
+   951                           
+   952                           ;main.c: 81:         {
+   953     06E6  2F1B               	goto	l775
+   954     06E7                     l767:
+   955     06E7  0873               	movf	glow_on_press@j+3,w
+   956     06E8  1D03               	btfss	3,2
+   957     06E9  2EF8               	goto	u440
+   958     06EA  0872               	movf	glow_on_press@j+2,w
+   959     06EB  1D03               	btfss	3,2
+   960     06EC  2EF8               	goto	u440
+   961     06ED  0871               	movf	glow_on_press@j+1,w
+   962     06EE  1D03               	btfss	3,2
+   963     06EF  2EF8               	goto	u440
+   964     06F0  3009               	movlw	9
+   965     06F1  0270               	subwf	glow_on_press@j,w
+   966     06F2  1D03               	skipz
+   967     06F3  2EF4               	goto	u443
+   968     06F4                     u443:
+   969     06F4  1C03               	btfss	3,0
+   970     06F5  2EF7               	goto	u441
+   971     06F6  2EF8               	goto	u440
+   972     06F7                     u441:
+   973     06F7  2F1B               	goto	l57
+   974     06F8                     u440:
+   975     06F8                     l769:
+   976     06F8  0873               	movf	glow_on_press@j+3,w
+   977     06F9  1D03               	btfss	3,2
+   978     06FA  2F08               	goto	u451
+   979     06FB  0872               	movf	glow_on_press@j+2,w
+   980     06FC  1D03               	btfss	3,2
+   981     06FD  2F08               	goto	u451
+   982     06FE  0871               	movf	glow_on_press@j+1,w
+   983     06FF  1D03               	btfss	3,2
+   984     0700  2F08               	goto	u451
+   985     0701  3011               	movlw	17
+   986     0702  0270               	subwf	glow_on_press@j,w
+   987     0703  1D03               	skipz
+   988     0704  2F05               	goto	u453
+   989     0705                     u453:
+   990     0705  1803               	btfsc	3,0
+   991     0706  2F08               	goto	u451
+   992     0707  2F09               	goto	u450
+   993     0708                     u451:
+   994     0708  2F1B               	goto	l57
+   995     0709                     u450:
+   996     0709                     l771:
+   997                           
+   998                           ;main.c: 84:             if(k<8);main.c: 85:             {
+   999     0709  3001               	movlw	1
+  1000     070A  00F8               	movwf	??_glow_on_press
+  1001     070B  0870               	movf	glow_on_press@j,w
+  1002     070C  3C10               	sublw	16
+  1003     070D  3E01               	addlw	1
+  1004     070E  2F11               	goto	u464
+  1005     070F                     u465:
+  1006     070F  1003               	clrc
+  1007     0710  0DF8               	rlf	??_glow_on_press,f
+  1008     0711                     u464:
+  1009     0711  3EFF               	addlw	-1
+  1010     0712  1D03               	skipz
+  1011     0713  2F0F               	goto	u465
+  1012     0714  0878               	movf	??_glow_on_press,w
+  1013     0715  3AFF               	xorlw	255
+  1014     0716  1283               	bcf	3,5	;RP0=0, select bank0
+  1015     0717  1303               	bcf	3,6	;RP1=0, select bank0
+  1016     0718  0508               	andwf	8,w	;volatile
+  1017     0719  0088               	movwf	8	;volatile
+  1018     071A  2ED8               	goto	l765
+  1019     071B                     l57:
+  1020     071B                     l775:
+  1021                           
+  1022                           ;main.c: 89:             else if(k>=8 && k<16)
+  1023     071B  3010               	movlw	16
+  1024     071C  0674               	xorwf	glow_on_press@i,w
+  1025     071D  0475               	iorwf	glow_on_press@i+1,w
+  1026     071E  0476               	iorwf	glow_on_press@i+2,w
+  1027     071F  0477               	iorwf	glow_on_press@i+3,w
+  1028     0720  1D03               	btfss	3,2
+  1029     0721  2F23               	goto	u471
+  1030     0722  2F24               	goto	u470
+  1031     0723                     u471:
+  1032     0723  2FE3               	goto	l77
+  1033     0724                     u470:
+  1034     0724                     l777:
+  1035     0724  3011               	movlw	17
+  1036     0725  0670               	xorwf	glow_on_press@j,w
+  1037     0726  0471               	iorwf	glow_on_press@j+1,w
+  1038     0727  0472               	iorwf	glow_on_press@j+2,w
+  1039     0728  0473               	iorwf	glow_on_press@j+3,w
+  1040     0729  1D03               	btfss	3,2
+  1041     072A  2F2C               	goto	u481
+  1042     072B  2F2D               	goto	u480
+  1043     072C                     u481:
+  1044     072C  2FE3               	goto	l77
+  1045     072D                     u480:
+  1046     072D                     l779:
+  1047                           
+  1048                           ;main.c: 90:             {;main.c: 91:                 PORTD = (unsigned char)(PORTD & ~
+      +                          (1<<(k-8)));
+  1049     072D  3000               	movlw	0
+  1050     072E  00F7               	movwf	glow_on_press@i+3
+  1051     072F  3000               	movlw	0
+  1052     0730  00F6               	movwf	glow_on_press@i+2
+  1053     0731  3000               	movlw	0
+  1054     0732  00F5               	movwf	glow_on_press@i+1
+  1055     0733  3000               	movlw	0
+  1056     0734  00F4               	movwf	glow_on_press@i
+  1057                           
+  1058                           ;main.c: 92:                 k++;
+  1059     0735  3000               	movlw	0
+  1060     0736  00F3               	movwf	glow_on_press@j+3
+  1061     0737  3000               	movlw	0
+  1062     0738  00F2               	movwf	glow_on_press@j+2
+  1063     0739  3000               	movlw	0
+  1064     073A  00F1               	movwf	glow_on_press@j+1
+  1065     073B  3000               	movlw	0
+  1066     073C  00F0               	movwf	glow_on_press@j
+  1067     073D  2FE3               	goto	l77
+  1068     073E                     l781:
+  1069     073E  303D               	movlw	61
+  1070     073F  067A               	xorwf	glow_on_press@key,w
+  1071     0740  1D03               	btfss	3,2
+  1072     0741  2F43               	goto	u491
+  1073     0742  2F44               	goto	u490
+  1074     0743                     u491:
+  1075     0743  2FC0               	goto	l801
+  1076     0744                     u490:
+  1077     0744                     l783:
+  1078                           
+  1079                           ;main.c: 97:             };main.c: 100:         {
+  1080     0744  0823               	movf	glow_on_press@k+3,w
+  1081     0745  1D03               	btfss	3,2
+  1082     0746  2F54               	goto	u501
+  1083     0747  0822               	movf	glow_on_press@k+2,w
+  1084     0748  1D03               	btfss	3,2
+  1085     0749  2F54               	goto	u501
+  1086     074A  0821               	movf	glow_on_press@k+1,w
+  1087     074B  1D03               	btfss	3,2
+  1088     074C  2F54               	goto	u501
+  1089     074D  3008               	movlw	8
+  1090     074E  0220               	subwf	glow_on_press@k,w
+  1091     074F  1D03               	skipz
+  1092     0750  2F51               	goto	u503
+  1093     0751                     u503:
+  1094     0751  1803               	btfsc	3,0
+  1095     0752  2F54               	goto	u501
+  1096     0753  2F55               	goto	u500
+  1097     0754                     u501:
+  1098     0754  2F72               	goto	l789
+  1099     0755                     u500:
+  1100     0755                     l785:
+  1101                           
+  1102                           ;main.c: 101: ;main.c: 102: 
+  1103     0755  3001               	movlw	1
+  1104     0756  00F8               	movwf	??_glow_on_press
+  1105     0757  1283               	bcf	3,5	;RP0=0, select bank0
+  1106     0758  1303               	bcf	3,6	;RP1=0, select bank0
+  1107     0759  0A20               	incf	glow_on_press@k,w
+  1108     075A  2F5D               	goto	u514
+  1109     075B                     u515:
+  1110     075B  1003               	clrc
+  1111     075C  0DF8               	rlf	??_glow_on_press,f
+  1112     075D                     u514:
+  1113     075D  3EFF               	addlw	-1
+  1114     075E  1D03               	skipz
+  1115     075F  2F5B               	goto	u515
+  1116     0760  0878               	movf	??_glow_on_press,w
+  1117     0761  0408               	iorwf	8,w	;volatile
+  1118     0762  0088               	movwf	8	;volatile
+  1119     0763                     l787:
+  1120                           
+  1121                           ;main.c: 103:             if(flag)
+  1122     0763  3001               	movlw	1
+  1123     0764  07A0               	addwf	glow_on_press@k,f
+  1124     0765  3000               	movlw	0
+  1125     0766  1803               	skipnc
+  1126     0767  3001               	movlw	1
+  1127     0768  07A1               	addwf	glow_on_press@k+1,f
+  1128     0769  3000               	movlw	0
+  1129     076A  1803               	skipnc
+  1130     076B  3001               	movlw	1
+  1131     076C  07A2               	addwf	glow_on_press@k+2,f
+  1132     076D  3000               	movlw	0
+  1133     076E  1803               	skipnc
+  1134     076F  3001               	movlw	1
+  1135     0770  07A3               	addwf	glow_on_press@k+3,f
+  1136                           
+  1137                           ;main.c: 104:             {
+  1138     0771  2FAA               	goto	l797
+  1139     0772                     l789:
+  1140     0772  1283               	bcf	3,5	;RP0=0, select bank0
+  1141     0773  1303               	bcf	3,6	;RP1=0, select bank0
+  1142     0774  0823               	movf	glow_on_press@k+3,w
+  1143     0775  1D03               	btfss	3,2
+  1144     0776  2F85               	goto	u520
+  1145     0777  0822               	movf	glow_on_press@k+2,w
+  1146     0778  1D03               	btfss	3,2
+  1147     0779  2F85               	goto	u520
+  1148     077A  0821               	movf	glow_on_press@k+1,w
+  1149     077B  1D03               	btfss	3,2
+  1150     077C  2F85               	goto	u520
+  1151     077D  3008               	movlw	8
+  1152     077E  0220               	subwf	glow_on_press@k,w
+  1153     077F  1D03               	skipz
+  1154     0780  2F81               	goto	u523
+  1155     0781                     u523:
+  1156     0781  1C03               	btfss	3,0
+  1157     0782  2F84               	goto	u521
+  1158     0783  2F85               	goto	u520
+  1159     0784                     u521:
+  1160     0784  2FAA               	goto	l797
+  1161     0785                     u520:
+  1162     0785                     l791:
+  1163     0785  1283               	bcf	3,5	;RP0=0, select bank0
+  1164     0786  1303               	bcf	3,6	;RP1=0, select bank0
+  1165     0787  0823               	movf	glow_on_press@k+3,w
+  1166     0788  1D03               	btfss	3,2
+  1167     0789  2F97               	goto	u531
+  1168     078A  0822               	movf	glow_on_press@k+2,w
+  1169     078B  1D03               	btfss	3,2
+  1170     078C  2F97               	goto	u531
+  1171     078D  0821               	movf	glow_on_press@k+1,w
+  1172     078E  1D03               	btfss	3,2
+  1173     078F  2F97               	goto	u531
+  1174     0790  3010               	movlw	16
+  1175     0791  0220               	subwf	glow_on_press@k,w
+  1176     0792  1D03               	skipz
+  1177     0793  2F94               	goto	u533
+  1178     0794                     u533:
+  1179     0794  1803               	btfsc	3,0
+  1180     0795  2F97               	goto	u531
+  1181     0796  2F98               	goto	u530
+  1182     0797                     u531:
+  1183     0797  2FAA               	goto	l797
+  1184     0798                     u530:
+  1185     0798                     l793:
+  1186                           
+  1187                           ;main.c: 106:             };main.c: 107:             else
+  1188     0798  3001               	movlw	1
+  1189     0799  00F8               	movwf	??_glow_on_press
+  1190     079A  1283               	bcf	3,5	;RP0=0, select bank0
+  1191     079B  1303               	bcf	3,6	;RP1=0, select bank0
+  1192     079C  0820               	movf	glow_on_press@k,w
+  1193     079D  3EF8               	addlw	248
+  1194     079E  3E01               	addlw	1
+  1195     079F  2FA2               	goto	u544
+  1196     07A0                     u545:
+  1197     07A0  1003               	clrc
+  1198     07A1  0DF8               	rlf	??_glow_on_press,f
+  1199     07A2                     u544:
+  1200     07A2  3EFF               	addlw	-1
+  1201     07A3  1D03               	skipz
+  1202     07A4  2FA0               	goto	u545
+  1203     07A5  0878               	movf	??_glow_on_press,w
+  1204     07A6  3AFF               	xorlw	255
+  1205     07A7  0508               	andwf	8,w	;volatile
+  1206     07A8  0088               	movwf	8	;volatile
+  1207     07A9  2F63               	goto	l787
+  1208     07AA                     l797:
+  1209                           
+  1210                           ;main.c: 110:             }
+  1211     07AA  3010               	movlw	16
+  1212     07AB  1283               	bcf	3,5	;RP0=0, select bank0
+  1213     07AC  1303               	bcf	3,6	;RP1=0, select bank0
+  1214     07AD  0620               	xorwf	glow_on_press@k,w
+  1215     07AE  0421               	iorwf	glow_on_press@k+1,w
+  1216     07AF  0422               	iorwf	glow_on_press@k+2,w
+  1217     07B0  0423               	iorwf	glow_on_press@k+3,w
+  1218     07B1  1D03               	btfss	3,2
+  1219     07B2  2FB4               	goto	u551
+  1220     07B3  2FB5               	goto	u550
+  1221     07B4                     u551:
+  1222     07B4  2FE3               	goto	l77
+  1223     07B5                     u550:
+  1224     07B5                     l799:
+  1225                           
+  1226                           ;main.c: 111:         };main.c: 112:         else if( key == 0x37)
+  1227     07B5  3000               	movlw	0
+  1228     07B6  1283               	bcf	3,5	;RP0=0, select bank0
+  1229     07B7  1303               	bcf	3,6	;RP1=0, select bank0
+  1230     07B8  00A3               	movwf	glow_on_press@k+3
+  1231     07B9  3000               	movlw	0
+  1232     07BA  00A2               	movwf	glow_on_press@k+2
+  1233     07BB  3000               	movlw	0
+  1234     07BC  00A1               	movwf	glow_on_press@k+1
+  1235     07BD  3000               	movlw	0
+  1236     07BE  00A0               	movwf	glow_on_press@k
+  1237     07BF  2FE3               	goto	l77
+  1238     07C0                     l801:
+  1239     07C0  303B               	movlw	59
+  1240     07C1  067A               	xorwf	glow_on_press@key,w
+  1241     07C2  1D03               	btfss	3,2
+  1242     07C3  2FC5               	goto	u561
+  1243     07C4  2FC6               	goto	u560
+  1244     07C5                     u561:
+  1245     07C5  2FD1               	goto	l807
+  1246     07C6                     u560:
+  1247     07C6                     l803:
+  1248                           
+  1249                           ;main.c: 116: ;main.c: 119:                 PORTD = 0xF0;
+  1250     07C6  0828               	movf	glow_on_press@flag,w
+  1251     07C7  0429               	iorwf	glow_on_press@flag+1,w
+  1252     07C8  1903               	btfsc	3,2
+  1253     07C9  2FCB               	goto	u571
+  1254     07CA  2FCC               	goto	u570
+  1255     07CB                     u571:
+  1256     07CB  2FCF               	goto	l70
+  1257     07CC                     u570:
+  1258     07CC                     l805:
+  1259                           
+  1260                           ;main.c: 120:             };main.c: 121:             else
+  1261     07CC  30AA               	movlw	170
+  1262     07CD  0088               	movwf	8	;volatile
+  1263                           
+  1264                           ;main.c: 122:             {
+  1265     07CE  2FE3               	goto	l77
+  1266     07CF                     l70:	
+  1267                           ;main.c: 123:                 PORTD = ~PORTD;
+  1268                           
+  1269                           
+  1270                           ;main.c: 124:             };main.c: 125:         }
+  1271     07CF  0988               	comf	8,f	;volatile
+  1272     07D0  2FE3               	goto	l77
+  1273     07D1                     l807:
+  1274     07D1  3037               	movlw	55
+  1275     07D2  067A               	xorwf	glow_on_press@key,w
+  1276     07D3  1D03               	btfss	3,2
+  1277     07D4  2FD6               	goto	u581
+  1278     07D5  2FD7               	goto	u580
+  1279     07D6                     u581:
+  1280     07D6  2FE2               	goto	l813
+  1281     07D7                     u580:
+  1282     07D7                     l809:
+  1283                           
+  1284                           ;main.c: 129: }
+  1285     07D7  0828               	movf	glow_on_press@flag,w
+  1286     07D8  0429               	iorwf	glow_on_press@flag+1,w
+  1287     07D9  1903               	btfsc	3,2
+  1288     07DA  2FDC               	goto	u591
+  1289     07DB  2FDD               	goto	u590
+  1290     07DC                     u591:
+  1291     07DC  2FE0               	goto	l74
+  1292     07DD                     u590:
+  1293     07DD                     l811:
+  1294     07DD  30F0               	movlw	240
+  1295     07DE  0088               	movwf	8	;volatile
+  1296     07DF  2FE3               	goto	l77
+  1297     07E0                     l74:
+  1298     07E0  0988               	comf	8,f	;volatile
+  1299     07E1  2FE3               	goto	l77
+  1300     07E2                     l813:
+  1301     07E2  0188               	clrf	8	;volatile
+  1302     07E3                     l77:
+  1303     07E3  0008               	return
+  1304     07E4                     __end_of_glow_on_press:
+  1305     007E                     btemp	set	126	;btemp
+  1306     007E                     wtemp0	set	126
+  1307                           
+  1308                           	psect	idloc
+  1309                           
+  1310                           ;Config register IDLOC0 @ 0x2000
+  1311                           ;	unspecified, using default values
+  1312     2000                     	org	8192
+  1313     2000  3FFF               	dw	16383
+  1314                           
+  1315                           ;Config register IDLOC1 @ 0x2001
+  1316                           ;	unspecified, using default values
+  1317     2001                     	org	8193
+  1318     2001  3FFF               	dw	16383
+  1319                           
+  1320                           ;Config register IDLOC2 @ 0x2002
+  1321                           ;	unspecified, using default values
+  1322     2002                     	org	8194
+  1323     2002  3FFF               	dw	16383
+  1324                           
+  1325                           ;Config register IDLOC3 @ 0x2003
+  1326                           ;	unspecified, using default values
+  1327     2003                     	org	8195
+  1328     2003  3FFF               	dw	16383
+  1329                           
+  1330                           	psect	config
+  1331                           
+  1332                           ;Config register CONFIG @ 0x2007
+  1333                           ;	Oscillator Selection bits
+  1334                           ;	FOSC = 0x3, unprogrammed default
+  1335                           ;	Watchdog Timer Enable bit
+  1336                           ;	WDTE = OFF, WDT disabled
+  1337                           ;	Power-up Timer Enable bit
+  1338                           ;	PWRTE = 0x1, unprogrammed default
+  1339                           ;	Brown-out Reset Enable bit
+  1340                           ;	BOREN = 0x1, unprogrammed default
+  1341                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  1342                           ;	LVP = 0x1, unprogrammed default
+  1343                           ;	Data EEPROM Memory Code Protection bit
+  1344                           ;	CPD = 0x1, unprogrammed default
+  1345                           ;	Flash Program Memory Write Enable bits
+  1346                           ;	WRT = 0x3, unprogrammed default
+  1347                           ;	In-Circuit Debugger Mode bit
+  1348                           ;	DEBUG = 0x1, unprogrammed default
+  1349                           ;	Flash Program Memory Code Protection bit
+  1350                           ;	CP = 0x1, unprogrammed default
+  1351     2007                     	org	8199
+  1352     2007  3FFB               	dw	16379
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        1
+    BSS         18
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      5      14
+    BANK0            80      0      10
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_glow_on_press
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0     171
+                                              3 COMMON     2     2      0
+                      _glow_on_press
+                        _init_config
+                _read_digital_keypad
+ ---------------------------------------------------------------------------------
+ (1) _read_digital_keypad                                  2     2      0      15
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _init_config                                          0     0      0       0
+                _init_digital_keypad
+ ---------------------------------------------------------------------------------
+ (2) _init_digital_keypad                                  0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _glow_on_press                                        3     3      0      88
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _glow_on_press
+   _init_config
+     _init_digital_keypad
+   _read_digital_keypad
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50      0       A       5       12.5%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      5       E       1      100.0%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      18      12        0.0%
+ABS                  0      0      18       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
+Symbol Table                                                                                   Sun Nov 26 12:42:26 2023
+
+                          l7 05C6                           l13 061A                           l30 05D2  
+                         l35 05D8                           l70 07CF                           l57 071B  
+                         l74 07E0                           l77 07E3                           u10 05F7  
+                         u11 05F6                           u20 0607                           u21 0606  
+                         u30 060C                           u31 060B                           u40 0617  
+                         u41 0616                          l621 05C1                          l631 05FC  
+                        l623 05F2                          l801 07C0                          l633 0607  
+                        l625 05F7                          l811 07DD                          l803 07C6  
+                        l651 05C7                          l635 060C                          l643 060E  
+                        l813 07E2                          l805 07CC                          l741 0637  
+                        l653 05CD                          l645 0617                          l821 05E7  
+                        l807 07D1                          l751 0674                          l743 0641  
+                        l647 0619                          l815 05D3                          l809 07D7  
+                        l761 06B7                          l753 0683                          l745 064F  
+                        l817 05DF                          l771 0709                          l763 06C8  
+                        l755 0694                          l747 0655                          l739 061C  
+                        l819 05E5                          l765 06D8                          l757 06A5  
+                        l749 0666                          l781 073E                          l791 0785  
+                        l783 0744                          l767 06E7                          l775 071B  
+                        l793 0798                          l785 0755                          l777 0724  
+                        l769 06F8                          l787 0763                          l779 072D  
+                        l797 07AA                          l789 0772                          l799 07B5  
+                        u400 06A5                          u401 06A4                          u330 0637  
+                        u403 06A1                          u331 0636                          u500 0755  
+                        u420 06C8                          u340 0648                          u501 0754  
+                        u421 06C7                          u341 0646                          u414 06AD  
+                        u350 0649                          u503 0751                          u423 06C4  
+                        u415 06AB                          u520 0785                          u440 06F8  
+                        u360 0655                          u600 05E5                          u521 0784  
+                        u441 06F7                          u361 0654                          u601 05E4  
+                        u530 0798                          u514 075D                          u450 0709  
+                        u434 06D0                          u370 0666                          u531 0797  
+                        u523 0781                          u515 075B                          u451 0708  
+                        u443 06F4                          u435 06CE                          u371 0665  
+                        u533 0794                          u453 0705                          u373 0662  
+                        u550 07B5                          u470 0724                          u390 0694  
+                        u551 07B4                          u471 0723                          u391 0693  
+                        u560 07C6                          u544 07A2                          u480 072D  
+                        u464 0711                          u384 066C                          u561 07C5  
+                        u545 07A0                          u481 072C                          u465 070F  
+                        u393 0690                          u385 066A                          u570 07CC  
+                        u490 0744                          u571 07CB                          u491 0743  
+                        u580 07D7                          u581 07D6                          u590 07DD  
+                        u591 07DC        ??_read_digital_keypad 0078                         _main 05D3  
+                       btemp 007E             glow_on_press@key 007A                         start 0000  
+                      ?_main 0078                 ?_init_config 0078                        _PORTB 0006  
+                      _PORTD 0008                        _TRISB 0086                        _TRISD 0088  
+               main@key_copy 007B            glow_on_press@flag 0028            glow_on_press@wait 0024  
+                      status 0003                        wtemp0 007E              __initialization 07E4  
+               __end_of_main 05F1                       ??_main 007B  __end_of_init_digital_keypad 05C7  
+               __pdataCOMMON 007D                _glow_on_press 061B      __end_of__initialization 07FC  
+             __pcstackCOMMON 0078               ?_glow_on_press 0078                   __pbssBANK0 0020  
+                 __pmaintext 05D3  __end_of_read_digital_keypad 061B                      __ptext1 05F1  
+                    __ptext2 05C7                      __ptext3 05C1                      __ptext4 061B  
+            ??_glow_on_press 0078                      main@key 007C         end_of_initialization 07FC  
+             glow_on_press@i 0074               glow_on_press@j 0070               glow_on_press@k 0020  
+              __pidataCOMMON 05C0          start_initialization 07E4                ??_init_config 0078  
+                __pbssCOMMON 0070                    ___latbits 0002          __end_of_init_config 05D3  
+      __end_of_glow_on_press 07E4          _init_digital_keypad 05C1         ?_init_digital_keypad 0078  
+                _init_config 05C7      read_digital_keypad@mode 0079      read_digital_keypad@once 007D  
+      ??_init_digital_keypad 0078          _read_digital_keypad 05F1         ?_read_digital_keypad 0078  
