@@ -1,0 +1,121 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"5 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\isr.c
+[v _isr isr `II(v  1 e 1 0 ]
+"15 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\main.c
+[v _init_config init_config `(v  1 e 1 0 ]
+"24
+[v _main main `(v  1 e 1 0 ]
+"5 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\ssd.c
+[v _init_ssd init_ssd `(v  1 e 1 0 ]
+"16
+[v _display display `(v  1 e 1 0 ]
+"2 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\timer0.c
+[v _init_timer0 init_timer0 `(v  1 e 1 0 ]
+"59 C:/Users/ashiv/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f877a.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+"166
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"340
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"1325
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"2573
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"2648
+[v _PSA PSA `VEb  1 e 0 @1035 ]
+"2849
+[v _T0CS T0CS `VEb  1 e 0 @1037 ]
+"2882
+[v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
+"2885
+[v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
+"13 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\main.c
+[v _hr hr `ui  1 e 2 0 ]
+[v _min min `ui  1 e 2 0 ]
+[v _flag flag `ui  1 e 2 0 ]
+"24
+[v _main main `(v  1 e 1 0 ]
+{
+"26
+[v main@ssd ssd `[4]uc  1 s 4 ssd ]
+"27
+[v main@digit digit `[10]uc  1 s 10 digit ]
+"56
+} 0
+"15
+[v _init_config init_config `(v  1 e 1 0 ]
+{
+"22
+} 0
+"2 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\timer0.c
+[v _init_timer0 init_timer0 `(v  1 e 1 0 ]
+{
+"15
+} 0
+"5 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\ssd.c
+[v _init_ssd init_ssd `(v  1 e 1 0 ]
+{
+"14
+} 0
+"16
+[v _display display `(v  1 e 1 0 ]
+{
+[v display@data data `*.4uc  1 a 1 wreg ]
+"25
+[v display@wait wait `ul  1 a 4 4 ]
+"18
+[v display@digit digit `uc  1 a 1 9 ]
+"16
+[v display@data data `*.4uc  1 a 1 wreg ]
+"20
+[v display@data data `*.4uc  1 a 1 8 ]
+"27
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+"25
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"30
+} 0
+"5 D:\MPLAB PROJECTS\A9-SSD_STATIC_CLOCK\isr.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"7
+[v isr@count count `ui  1 s 2 count ]
+[v isr@mul mul `ui  1 s 2 mul ]
+"40
+} 0
